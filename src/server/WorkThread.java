@@ -20,19 +20,16 @@ public class WorkThread implements Runnable{
 
     @Override
     public void run() {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        String requestData = httpExchange.getRequestURI().getRawQuery();
+        System.out.println(requestData);
         OutputStream outputStream = httpExchange.getResponseBody();
        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);
         try {
             String data = "1";
             httpExchange.sendResponseHeaders(200,data.length());
             outputStreamWriter.write(data);
-            outputStream.close();
             outputStreamWriter.close();
+            outputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

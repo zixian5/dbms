@@ -12,7 +12,7 @@ public class Server {
     {
         HttpServer httpServer = HttpServer.create(new InetSocketAddress(8001), 0);
         httpServer.setExecutor(null);
-        httpServer.createContext("/",new Handler());
+        httpServer.createContext("/dbms",new Handler());
         httpServer.start();
     }
 
